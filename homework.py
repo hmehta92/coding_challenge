@@ -92,3 +92,34 @@ for i in file_2017:
                                         "amount":int(re.sub(",","",soup.find_all("div")[1].find_all("span")[1].string))}]})
 # Appending to the file started in part 1 
 append(scrape_list_2017)
+
+# Part 6: Combining data from both files
+list1=scrape_list_2015+scrape_list_2017
+artist = []
+list2 = []
+for z,i in enumerate(list1):
+    x = [item for item in artist if i['artist'] in item]
+    if x:
+        if i['works'][0]['currency']=='GBP':
+            i['works'][0]['currency']='USD'
+            i['works'][0]['amount']*=1.34
+            
+        [item[1] for item in list2 if x[0][0] in item][0]['works'].append(i['works'][0])
+    else:
+        if i['works'][0]['currency']=='GBP':
+            i['works'][0]['currency']='USD'
+            i['works'][0]['amount']*=1.34
+        artist.append((z,i['artist'])) #adding artist to checklist
+        list2.append((z,i))              # updating penultimate json list
+list3 = []
+for s,t in list2:
+    list3.append(t)
+final_combined =list3
+for z,i in enumerate(final_combined):
+    total = 0
+    for item in i['works']:
+        total += item['amount']
+    final_combined[z]['total amount'] = final_combined[z]['works'][0]['currency'] +' ' +"{:,}".format(total)
+# Appending to the file started in part 1 
+append(final_combined)
+print("Completed in time {}".format(time.time()-start))
