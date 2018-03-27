@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 27 12:59:36 2018
-
 @author: Harshit Mehta
 """
-
 # importing required packages
 import os
 from bs4 import BeautifulSoup
