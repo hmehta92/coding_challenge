@@ -65,3 +65,11 @@ for i in file_2015:
     scrape_list_2015.append({"artist":soup.h2.string.split("(")[0].strip(),"works":[{"title":soup.h3.string}]})
 # Appending to the file started in part 1 
 append(scrape_list_2015)
+
+# part 3: To read artist name, work and priee
+scrape_list_2015=[]
+for i in file_2015:
+    soup=scrap("2015",i)
+    scrape_list_2015.append({"artist":soup.h2.string.split("(")[0].strip(),"works":[{"title":soup.h3.string,"price":soup.find_all("div")[1].string}]})
+# Appending to the file started in part 1 
+append(scrape_list_2015)
