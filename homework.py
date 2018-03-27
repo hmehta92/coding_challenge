@@ -11,13 +11,14 @@ import json
 import time
 start=time.time() # to see the time it takes for the entire work
 # Changing directory to access files
-directory="C:/Users/Harshit Mehta/Desktop/arthena/coding-challenge/lot-parser/data" # directory which contains both the folder
+# directory which contains both the year folder
+directory="C:/Users/Harshit Mehta/Desktop/arthena/coding-challenge/lot-parser/data" 
 os.chdir(directory)
 
-# Accessing files for both the year
+# Accessing files name for both the year
 filename=[file for file in os.listdir(".")]
 
-# Accessing HTML files of each folder
+# Accessing HTML files name of each folder
 file_2015=[file for file in os.listdir(filename[0])]
 file_2017=[file for file in os.listdir(filename[1])]
 
