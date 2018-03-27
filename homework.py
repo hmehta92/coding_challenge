@@ -82,3 +82,13 @@ for i in file_2015:
                                         "amount":int(re.sub(",","",soup.find_all("div")[1].string.split(" ")[1]))}]})
 # Appending to the file started in part 1 
 append(scrape_list_2015)
+
+# Part 5: To get details from year 2017 folder
+scrape_list_2017=[]
+for i in file_2017:
+    soup=scrap("2017",i)        
+    scrape_list_2017.append({"artist":soup.find_all("h3")[0].string.split("(")[0].strip(),"works":[{"title":soup.find_all("h3")[1].string,
+                                        "currency":soup.find_all("div")[1].span.string,
+                                        "amount":int(re.sub(",","",soup.find_all("div")[1].find_all("span")[1].string))}]})
+# Appending to the file started in part 1 
+append(scrape_list_2017)
